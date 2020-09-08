@@ -7,16 +7,20 @@ import { Provider } from "react-redux";
 import GlobalStyle from "./styles/global";
 import Header from "./components/Header";
 
-import store from "./store";
+import { store, persistor } from "./store";
+
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Header />
-        <Routes />
-        <GlobalStyle />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <Header />
+          <Routes />
+          <GlobalStyle />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   );
 }

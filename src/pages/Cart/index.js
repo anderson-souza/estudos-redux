@@ -7,6 +7,8 @@ import {
   MdDelete,
 } from "react-icons/md";
 
+import { persistor } from "../../store";
+
 export default function Cart() {
   return (
     <Container>
@@ -48,7 +50,11 @@ export default function Cart() {
             </td>
             <td>
               <button type='button'>
-                <MdDelete size={15} color='#7159c1' />
+                <MdDelete
+                  size={15}
+                  color='#7159c1'
+                  onClick={() => persistor.purge()}
+                />
               </button>
             </td>
           </tr>
